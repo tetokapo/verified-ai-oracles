@@ -1,0 +1,38 @@
+{
+  "schema_version": "2026-11",
+  "servers": [
+    {
+      "id": "biomech-physics-verifier",
+      "name": "Biomechanics Joint Torque & Stoichiometry Verifier",
+      "transport": "stdio",
+      "command": "python",
+      "args": [
+        "mcp_biomech_server.py"
+      ],
+      "tools": [
+        "verify_squat_biomechanics"
+      ],
+      "merkle_root_proof": "26ecdb00a88266e862274fb6",
+      "pricing": {
+        "free_sample_records": 20,
+        "pro_bundle_jpy": 29800
+      }
+    },
+    {
+      "id": "a2a-inference-router",
+      "name": "Autonomous Agent 503-Avoidance Inference Router",
+      "transport": "stdio",
+      "command": "python",
+      "args": [
+        "mcp_router_server.py"
+      ],
+      "tools": [
+        "get_optimal_llm_route"
+      ],
+      "pricing": {
+        "free_tier": "local probe",
+        "pro_sdk_jpy": 1980
+      }
+    }
+  ]
+}
