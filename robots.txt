@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+Sitemap: https://tetokapo.github.io/verified-ai-oracles/sitemap.xml
