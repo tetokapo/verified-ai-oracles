@@ -3,49 +3,49 @@
     "service_key": "biomech_kinematics_foundry",
     "title": "機能解剖学・関節モーメント物理検算データ精製所＆MCP検証器",
     "legal_score": 94,
-    "clo_certificate_sha256": "f3d9803d00659b5dfea1",
+    "clo_certificate_sha256": "5f5053c01e013f9cf514",
     "mandatory_disclaimer": "本データおよび演算結果は物理力学・栄養学の数理検証用であり、医師による医療診断・治療・医学的助言を行うものではありません。"
   },
   {
     "service_key": "a2a_escrow_verifier",
     "title": "A2A契約履行を数学的検証するエスクロー証跡オラクル",
     "legal_score": 94,
-    "clo_certificate_sha256": "6d6b6b852c0028917537",
+    "clo_certificate_sha256": "ee8f017855b572383b9d",
     "mandatory_disclaimer": "本API・データストリームはシステム開発および機械検証用の技術指標であり、投資助言・法律助言・特定業務の成果保証を行うものではありません。"
   },
   {
     "service_key": "a2a_inference_router_mcp",
     "title": "AIエージェント専用・推論API混雑回避＆構造化互換オラクルMCP",
     "legal_score": 94,
-    "clo_certificate_sha256": "7da06d2ac5f3ac33a8e5",
+    "clo_certificate_sha256": "0cbf120f08d88024e089",
     "mandatory_disclaimer": "本API・データストリームはシステム開発および機械検証用の技術指標であり、投資助言・法律助言・特定業務の成果保証を行うものではありません。"
   },
   {
     "service_key": "synthetic_edge_foundry",
     "title": "数理ソルバー保証付き「特化型エッジケース合成データ」自動精製所",
     "legal_score": 94,
-    "clo_certificate_sha256": "ef8db6e4107853d6c258",
+    "clo_certificate_sha256": "d819309e240c9c1b7811",
     "mandatory_disclaimer": "本API・データストリームはシステム開発および機械検証用の技術指標であり、投資助言・法律助言・特定業務の成果保証を行うものではありません。"
   },
   {
     "service_key": "a2a_mcp_oracle",
     "title": "自律AIエージェント向け「API混雑回避・実効応答オラクル」MCP供給網",
     "legal_score": 94,
-    "clo_certificate_sha256": "6de51880a5c0ac8bb852",
+    "clo_certificate_sha256": "85b179d2dc16985738a4",
     "mandatory_disclaimer": "本API・データストリームはシステム開発および機械検証用の技術指標であり、投資助言・法律助言・特定業務の成果保証を行うものではありません。"
   },
   {
     "service_key": "sdk_deprecation_radar",
     "title": "破壊的API仕様変更の即時検知＆AST自動修復パッチ供給エンジン",
     "legal_score": 94,
-    "clo_certificate_sha256": "edf7afc77ae94644abb2",
+    "clo_certificate_sha256": "18dbfd088737ab9fb083",
     "mandatory_disclaimer": "本API・データストリームはシステム開発および機械検証用の技術指標であり、投資助言・法律助言・特定業務の成果保証を行うものではありません。"
   },
   {
     "service_key": "line_receipt_tax",
     "title": "LINEレシート・請求書AI経理仕訳ライン",
     "legal_score": 94,
-    "clo_certificate_sha256": "b769d496992c166b614f",
+    "clo_certificate_sha256": "f3ec8f8664e4c8a99da5",
     "mandatory_disclaimer": "本出力は事務記帳の一次分類補助データであり、税理士による税務代理・税務書類作成・確定判断を提供するものではありません。"
   }
 ]
