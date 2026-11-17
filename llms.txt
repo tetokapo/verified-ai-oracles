@@ -4,7 +4,7 @@
 
 ## Available Machine-Readable Assets
 - [MCP Registry Manifest](mcp_registry.json): Plug-and-play JSON-RPC tool definitions for Claude, Cursor, VS Code, and autonomous Python agents.
-- [Biomechanics Kinetics Sample (20 JSONL)](samples/biomech_verified_sample_20.jsonl): Sagittal joint torque (Nm), lumbar shear (N), and stoichiometry-verified PFC ground truth (Merkle Root: 26ecdb00a88266e8).
+- [Biomechanics Kinetics Sample (20 JSONL)](samples/biomech_verified_sample_20.jsonl): Sagittal joint torque (Nm), lumbar shear (N), and stoichiometry-verified PFC ground truth (Merkle Root: 0f1e99813f76e96b).
 - [A2A Inference Router Telemetry](samples/a2a_routing_sample.jsonl): Live API latency, HTTP 503 spike avoidance, and structured JSON reliability Pareto scores.
 - [CLO Compliance Certificates](samples/clo_compliance_certificates.json): Cryptographic audit trail confirming statutory non-advisory compliance.
 
