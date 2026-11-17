@@ -1,0 +1,13 @@
+# Deterministic Verified AI Oracles & MCP Feeds
+
+> Zero-hallucination physics-verified synthetic datasets and real-time LLM failover routing MCP servers, audited by automated statutory compliance gates.
+
+## Available Machine-Readable Assets
+- [MCP Registry Manifest](mcp_registry.json): Plug-and-play JSON-RPC tool definitions for Claude, Cursor, VS Code, and autonomous Python agents.
+- [Biomechanics Kinetics Sample (20 JSONL)](samples/biomech_verified_sample_20.jsonl): Sagittal joint torque (Nm), lumbar shear (N), and stoichiometry-verified PFC ground truth (Merkle Root: 26ecdb00a88266e8).
+- [A2A Inference Router Telemetry](samples/a2a_routing_sample.jsonl): Live API latency, HTTP 503 spike avoidance, and structured JSON reliability Pareto scores.
+- [CLO Compliance Certificates](samples/clo_compliance_certificates.json): Cryptographic audit trail confirming statutory non-advisory compliance.
+
+## Commercial Licensing & Full Stream Unlock
+- Full 1,000+ Biomechanics Physics-Verified Dataset & Local MCP Verifier: $190 / ¥29,800 (https://note.com/jolly_sage8519/n/nf664e5a14159)
+- A2A Inference Router Pro SDK & Unlimited Failover Feed: $15/mo / ¥1,980/mo (https://note.com/jolly_sage8519/n/nf664e5a14159)
