@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instant Commercial Delivery Vault | Verified AI Oracles</title>
+<style>
+  body { font-family: 'Segoe UI', system-ui, Meiryo, sans-serif; background: #090d16; color: #f8fafc; margin: 0; padding: 36px 18px; line-height: 1.65; }
+  .box { max-width: 680px; margin: 0 auto; background: #1e293b; border: 1px solid #38bdf8; border-radius: 14px; padding: 28px; }
+  h1 { margin-top: 0; font-size: 1.38rem; color: #38bdf8; }
+  input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #f8fafc; font-size: 1rem; font-family: monospace; margin: 10px 0 14px 0; }
+  button { width: 100%; padding: 13px; border-radius: 8px; border: none; background: #10b981; color: #052e16; font-weight: bold; font-size: 1rem; cursor: pointer; }
+  #status { margin-top: 14px; padding: 12px; border-radius: 8px; background: #0f172a; color: #cbd5e1; font-size: 0.9rem; display: none; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>🔐 Instant Commercial Bundle Delivery Vault</h1>
+  <p style="margin:0 0 8px 0;color:#cbd5e1;font-size:0.92rem;">
+    Enter the <strong>Unlock Code</strong> displayed on your Stripe payment confirmation screen to decrypt and download your commercial ZIP bundle directly in your browser.<br>
+    決済完了画面に表示された「解除コード（AICO-PRO-...）」を入力すると、ブラウザ内で暗号化金庫を即時復号し商用フルパッケージZIPをダウンロードします。
+  </p>
+  <input type="text" id="passcode" placeholder="AICO-PRO-..." autocomplete="off">
+  <button onclick="unlockAndDownload()">⚡ Verify & Download Commercial ZIP</button>
+  <div id="status"></div>
+  <p style="margin:14px 0 0 0;font-size:0.8rem;color:#94a3b8;">
+    Zero-Server WebCrypto EtM-SHA256 Verification | <a href="index.html" style="color:#38bdf8;">Back to Storefront</a>
+  </p>
+</div>
+<script>
+function hexToBytes(hex) {
+  const arr = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < arr.length; i++) arr[i] = parseInt(hex.substr(i * 2, 2), 16);
+  return arr;
+}
+function b64ToBytes(b64) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return arr;
+}
+function concatBytes(...arrays) {
+  const total = arrays.reduce((acc, a) => acc + a.length, 0);
+  const out = new Uint8Array(total);
+  let off = 0;
+  for (const a of arrays) { out.set(a, off); off += a.length; }
+  return out;
+}
+async function unlockAndDownload() {
+  const st = document.getElementById("status");
+  st.style.display = "block";
+  const code = (document.getElementById("passcode").value || "").trim();
+  if (!code) { st.style.color = "#fbbf24"; st.textContent = "Please enter your Unlock Code."; return; }
+  try {
+    st.style.color = "#38bdf8";
+    st.textContent = "Fetching encrypted vault & verifying HMAC-SHA256 integrity...";
+    const res = await fetch("vault/pro_bundle_v1.json", {cache: "no-store"});
+    const vault = await res.json();
+    const enc = new TextEncoder();
+    const keyBytes = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode(code)));
+    const nonce = hexToBytes(vault.nonce_hex);
+    const cipher = b64ToBytes(vault.cipher_b64);
+    const kEnc = new Uint8Array(await crypto.subtle.digest("SHA-256", concatBytes(keyBytes, enc.encode("ENC"), nonce)));
+    const kMac = new Uint8Array(await crypto.subtle.digest("SHA-256", concatBytes(keyBytes, enc.encode("MAC"), nonce)));
+
+    const hmacKey = await crypto.subtle.importKey("raw", kMac, {name: "HMAC", hash: "SHA-256"}, false, ["verify"]);
+    const valid = await crypto.subtle.verify("HMAC", hmacKey, hexToBytes(vault.tag_hex), concatBytes(nonce, cipher));
+    if (!valid) {
+      st.style.color = "#f43f5e";
+      st.textContent = "Invalid Unlock Code. Please check the exact code on your payment receipt.";
+      return;
+    }
+    const plain = new Uint8Array(cipher.length);
+    const ctrBuf = new Uint8Array(36);
+    ctrBuf.set(kEnc, 0);
+    const dv = new DataView(ctrBuf.buffer);
+    const blocks = Math.ceil(cipher.length / 32);
+    for (let i = 0; i < blocks; i++) {
+      dv.setUint32(32, i, false);
+      const ks = new Uint8Array(await crypto.subtle.digest("SHA-256", ctrBuf));
+      const start = i * 32;
+      const end = Math.min(start + 32, cipher.length);
+      for (let j = start; j < end; j++) plain[j] = cipher[j] ^ ks[j - start];
+    }
+    const blob = new Blob([plain], {type: "application/zip"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = vault.filename || "Verified_AI_Oracles_Pro_Bundle.zip";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    st.style.color = "#10b981";
+    st.textContent = "Decryption complete! Your commercial ZIP download has started.";
+  } catch (e) {
+    st.style.color = "#f43f5e";
+    st.textContent = "Delivery error: " + e.message;
+  }
+}
+window.addEventListener("DOMContentLoaded", () => {
+  if (location.hash.startsWith("#code=")) {
+    document.getElementById("passcode").value = decodeURIComponent(location.hash.slice(6));
+  }
+});
+</script>
+</body>
+</html>
